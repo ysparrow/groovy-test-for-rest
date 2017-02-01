@@ -1,0 +1,42 @@
+group 'io.github.ysparrow'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'ru.d10xa.allure'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testCompile 'org.codehaus.groovy:groovy-all:2.4.7'
+    testCompile  group: 'junit', name: 'junit', version: '4.11'
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4-rc-3'
+    testCompile 'ru.yandex.qatools.allure:allure-junit-adaptor:1.5.0'
+    testCompile 'ru.yandex.qatools.allure:allure-commons:1.5.0'
+    testCompile 'ru.qatools.commons:properties:2.0.RC5'
+    testCompile 'org.apache.httpcomponents:httpclient:4.5.2'
+    testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
+    testCompile 'ru.yandex.qatools.allure:allure-spock-1.0-adaptor:1.0'
+    testCompile 'log4j:apache-log4j-extras:1.2.17'
+    testCompile 'org.kohsuke.jinterop:j-interop:2.0.8-kohsuke-1'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "ru.d10xa:gradle-allure-plugin:0.5.2"
+    }
+}
+
+allure {
+    aspectjweaver = true
+    spock = true
+    junit = true
+}
