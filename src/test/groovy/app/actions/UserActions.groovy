@@ -38,4 +38,15 @@ class UserActions {
         return response
     }
 
+    @Step
+    def static deleteUser(String id)
+    {
+        response = UserRequest.deleteUser(id)
+
+        println(response.data)
+        assert response.status == 200
+
+        return response
+    }
+
 }

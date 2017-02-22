@@ -1,0 +1,6 @@
+<aspectj>
+    <weaver>
+        <include within="tests..*"/>
+        <include within="app..*"/>
+    </weaver>
+</aspectj>

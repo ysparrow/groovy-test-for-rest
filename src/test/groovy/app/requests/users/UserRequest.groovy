@@ -30,4 +30,36 @@ class UserRequest extends DefaultRequest {
         return (HttpResponseDecorator) restClient.post(headers: [cookie: Settings.getCOOKIE()], contentType: JSON ,body: UserBody.getBody(user))
     }
 
+    @Step
+    def static deleteUser(String id) {
+        restClient =  RESTClientFactory.defaultClient("${Settings.getAppUrl()}/users/${id}")
+        return (HttpResponseDecorator) restClient.delete(headers: [cookie: Settings.getCOOKIE()], contentType: JSON)
+    }
+
+}
+
+class UserBody {
+
+    def static getBody(User user) {
+        return """
+    {
+    "name": "${user.getName()}",
+    "username": "${user.getUsername()}",
+    "email": "${user.getEmail()}",
+    "address": {
+      "street": "",
+      "suite": "",
+      "city": "",
+      "zipcode": "",
+      "geo": {
+        "lat": "",
+        "lng": ""
+      }
+    },
+    "phone": "${user.getPhone()}",
+    "website": "${user.getWebsite()}",
+    "company": []
+    }"""
+
+    }
 }
