@@ -2,61 +2,80 @@ package tests.functional
 
 import app.actions.UserActions
 import app.datatypes.User
+import groovy.util.logging.Log4j
 import groovyx.net.http.HttpResponseDecorator
+import ru.yandex.qatools.allure.annotations.Features
+import ru.yandex.qatools.allure.annotations.Stories
 import spock.lang.Unroll
 import tests.BaseSpec
 
-class UserTest extends BaseSpec{
+@Log4j
+@Features("User management")
+@Stories("Customer should be able to Add/Delete User entity")
+class UserTest extends BaseSpec {
 
-
-    HttpResponseDecorator response, resp2
-
+    HttpResponseDecorator response
     User user = new User();
 
-    def setup() {
-
-
+    def setupSpec() {
+        UserActions.deleteAllUsers()
     }
 
     @Unroll
-    def "Test Get all users"() {
+    def "Create new user: #name"() {
 
         setup:
         user.name = name
-        user.username =username
+        user.username = username
         user.email = email
-        user.address.geo.lat="12.32"
-        user.address.geo.lng="34.44"
-        user.address.street="sdddddd"
-        user.company.catchPhrase=""
-
-
+        user.phone = phone
+        user.website = website
+        user.company.name = companyname
 
         when:
-        response = UserActions.addUser(user)
-        then:
-        response.data.username == user.username
-        response.data.name == user.name
-        response.data.email == user.email
-
-        when:
-        UserActions.deleteUser(response.data.id.toString())
-        UserActions.getUserById(response.data.id.toString())
+        def userId = UserActions.addUser(user).data.id.toString()
+        response = UserActions.getUserById(userId)
 
         then:
-        def e = thrown(groovyx.net.http.HttpResponseException)
-        e.message == 'Not Found'
+        verifyUserData(response, user)
 
         where:
-
-        name                | username    | email
-        "Named Petro"       | "vasks"     | "dsafs@sd"
-        "Named ewq"         | "veasks"    | "dsafs@aaa.ss"
-        "Nqwed Pqwero"      | "vdfsasks"  | "dsafs@aaa.ss"
-        "Named Petro"       | "vasksdfs"  | "dsafs@aaa.ss"
-        "Nawqeqwed Petro"   | "vasdfsks"  | "dsafs@aaa.ss"
-        "Namqweqwd Petro"   | "vask432s"  | "dsafs@aaa.ss"
-        "Named Peewqeqwtro" | "vas6543ks" | "dsafs@aaa.ss"
+        name              | username | email             | phone          | website          | companyname
+        "John Dou"        | "jdou"   | "jdou@mail.com"   | "0-800-500-50" | "www.site.name"  | "Site Company"
+        "Peter Bro"       | ""       | "single@mail.com" | "0-800-500-51" | "www.site2.name" | "Erricson"
+        "Василь Петрович" | "vpetr"  | ""                | "0-800-500-52" | "www.site4.name" | "АБТ"
+        ""                | "none"   | "none@mail.com"   | ""             | "www.site5.name" | "Сільпо"
+        "Бабагаля"        | "bgalya" | "bgalya@mail.com" | "0-800-500-54" | ""               | "Школа 23"
     }
 
+    def "Verify that 5 users where created on previous step"() {
+        expect:
+        UserActions.getAllUsers().data.size() == 5
+    }
+
+    def "Explicitly verify delete user"() {
+        setup:
+        UserActions.deleteAllUsers()
+
+        when:
+        UserActions.addUser(user)
+
+        then:
+        UserActions.getAllUsers().data.size == 1
+
+        when:
+        UserActions.deleteUser("1")
+
+        then:
+        UserActions.getAllUsers().data.size == 0
+    }
+
+    void verifyUserData(response, user) {
+        assert response.data.username == user.username
+        assert response.data.name == user.name
+        assert response.data.email == user.email
+        assert response.data.phone == user.phone
+        assert response.data.website == user.website
+        assert response.data.company.name == user.company.name
+    }
 }

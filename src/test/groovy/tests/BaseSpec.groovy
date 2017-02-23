@@ -4,7 +4,6 @@ import app.Settings
 import groovy.util.logging.Log4j
 import spock.lang.Specification
 
-
 @Log4j
 class BaseSpec extends Specification {
 
