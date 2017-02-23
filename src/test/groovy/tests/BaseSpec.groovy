@@ -15,5 +15,4 @@ class BaseSpec extends Specification {
     def cleanupSpec() {
         log.info("All Tests Finished")
     }
-
 }

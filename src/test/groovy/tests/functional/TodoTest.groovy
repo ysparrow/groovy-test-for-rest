@@ -25,5 +25,4 @@ class TodoTest extends BaseSpec{
         then:
         TodoActions.getTodoById(todoId).data.title == todo.title
     }
-
 }

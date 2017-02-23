@@ -10,7 +10,6 @@ class Settings {
     static ConfigReader config = PropertyLoader.newInstance().populate(ConfigReader.class);
 
     static String APP_URL = config.getAppUrl()
-    static int OPERATION_TIMEOUT_IN_SEC = config.getTestTimeout()
     static String COOKIE = "";
 
     def static logSettings ()
