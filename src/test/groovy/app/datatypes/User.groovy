@@ -9,7 +9,6 @@ class User {
     Company company = new Company()
     Address address = new Address()
 }
-
 class Company {
     def name
     def catchPhrase
@@ -22,7 +21,6 @@ class Address {
     def zipcode
     Geo geo =new Geo()
 }
-
 class Geo {
     def lat
     def lng
