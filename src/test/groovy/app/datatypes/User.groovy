@@ -1,50 +1,29 @@
 package app.datatypes
 
 class User {
+    def name;
+    def username;
+    def email
+    def phone
+    def website
+    Company company = new Company()
+    Address address = new Address()
+}
 
-    String name;
-    String username;
-    String email
-    String phone
-    String website
+class Company {
+    def name
+    def catchPhrase
+    def bs
+}
+class Address {
+    def street
+    def suite
+    def city
+    def zipcode
+    Geo geo =new Geo()
+}
 
-    String getName() {
-        return name
-    }
-
-    void setName(String name) {
-        this.name = name
-    }
-
-    String getUsername() {
-        return username
-    }
-
-    void setUsername(String username) {
-        this.username = username
-    }
-
-    String getEmail() {
-        return email
-    }
-
-    void setEmail(String email) {
-        this.email = email
-    }
-
-    String getPhone() {
-        return phone
-    }
-
-    void setPhone(String phone) {
-        this.phone = phone
-    }
-
-    String getWebsite() {
-        return website
-    }
-
-    void setWebsite(String website) {
-        this.website = website
-    }
+class Geo {
+    def lat
+    def lng
 }

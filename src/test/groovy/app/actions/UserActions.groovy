@@ -6,47 +6,45 @@ import groovyx.net.http.HttpResponseDecorator
 import ru.yandex.qatools.allure.annotations.Step
 
 class UserActions {
-    public static HttpResponseDecorator response
+
+    static HttpResponseDecorator response
 
     @Step
-    def static getAllUsers()
-    {
+    def static getAllUsers() {
         response = UserRequest.getAllUsers()
         assert response.status == 200
-
         return response
     }
 
     @Step
-    def static getUserById(String id)
-    {
+    def static deleteAllUsers() {
+
+//        response = UserRequest.deleteUser(id)
+//
+//        println(response.data)
+//        assert response.status == 200
+//
+//        return response
+    }
+
+    @Step
+    def static getUserById(String id) {
         response = UserRequest.getUserById(id)
         assert response.status == 200
-
         return response
     }
 
-
     @Step
-    def static addUser(User user)
-    {
+    def static addUser(User user) {
         response = UserRequest.addUser(user)
-
-        println(response.data)
         assert response.status == 201
-
         return response
     }
 
     @Step
-    def static deleteUser(String id)
-    {
+    def static deleteUser(String id) {
         response = UserRequest.deleteUser(id)
-
-        println(response.data)
         assert response.status == 200
-
         return response
     }
-
 }

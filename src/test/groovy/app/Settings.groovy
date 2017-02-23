@@ -1,21 +1,20 @@
 package app
 
+import core.ConfigReader
+import groovy.util.logging.Log4j
+import ru.qatools.properties.PropertyLoader
+
+@Log4j
 class Settings {
 
-    private static String APP_URL = "http://localhost:3000";
-    private static String COOKIE = "";
-    private static int OPERATION_TIMEOUT_IN_SEC = 30;
+    static ConfigReader config = PropertyLoader.newInstance().populate(ConfigReader.class);
 
-    static String getAppUrl() {
-        return APP_URL
+    static String APP_URL = config.getAppUrl()
+    static int OPERATION_TIMEOUT_IN_SEC = config.getTestTimeout()
+    static String COOKIE = "";
+
+    def static logSettings ()
+    {
+        config.getProperties().each{log.info(it)}
     }
-
-    static String getCOOKIE() {
-        return COOKIE
-    }
-
-    static int getOpTimeout() {
-        return OPERATION_TIMEOUT_IN_SEC
-    }
-
 }
