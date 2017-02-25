@@ -1,13 +1,15 @@
 package app.datatypes
 
 class User {
-    def name;
-    def username;
+    def name
+    def username
     def email
     def phone
     def website
     Company company = new Company()
     Address address = new Address()
+
+    String toString(){return  name}
 }
 class Company {
     def name

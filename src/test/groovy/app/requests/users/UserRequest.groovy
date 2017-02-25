@@ -25,10 +25,10 @@ class UserRequest {
                 get(headers: [cookie: Settings.getCOOKIE()], contentType: JSON)
     }
 
-    @Step ("Add user: {1}")
-    def static addUser(User user, String name) {
+    @Step
+    def static addUser(User user) {
         return (HttpResponseDecorator) RESTClientFactory.defaultClient("${Settings.getAPP_URL()}/users").
-                post(headers: [cookie: Settings.getCOOKIE()], contentType: JSON, body: JsonOutput.toJson(user))
+                post(headers: [cookie: Settings.getCOOKIE()], contentType: JSON, body: user)
     }
 
     @Step

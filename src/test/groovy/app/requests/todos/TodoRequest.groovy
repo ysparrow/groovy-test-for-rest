@@ -1,4 +1,4 @@
-package app.requests.todos
+    package app.requests.todos
 
 import app.Settings
 import core.RESTClientFactory
@@ -24,13 +24,12 @@ class TodoRequest {
 
 class MessageBody {
 
-    def static getBody(UserId, title, status) {
+    def static getBody(userId, title, status) {
         return """
-               {
-                "userId": ${UserId},
-                "title": "${title}",
-                "completed": ${status}
-                }
-                """
+        {
+            "userId": ${userId},
+            "title": "${title}",
+            "completed": ${status}
+        } """
     }
 }

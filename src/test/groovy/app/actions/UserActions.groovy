@@ -20,14 +20,24 @@ class UserActions {
     }
 
     @Step
+    def static deleteUser(String id) {
+        response = UserRequest.deleteUser(id)
+        assert response.status == 200
+        return response
+    }
+
+    @Step
     def static deleteAllUsers() {
         response = UserRequest.getAllUsers()
         if (response.data != null) {
+
             log.info("${response.data.size()} users found")
+
             (response.data.id).each {
                 response = UserRequest.deleteUser(it.toString())
                 assert response.status == 200
             }
+
             log.info("Users are deleted")
         }
     }
@@ -41,15 +51,8 @@ class UserActions {
 
     @Step
     def static addUser(User user) {
-        response = UserRequest.addUser(user, user.name)
+        response = UserRequest.addUser(user)
         assert response.status == 201
-        return response
-    }
-
-    @Step
-    def static deleteUser(String id) {
-        response = UserRequest.deleteUser(id)
-        assert response.status == 200
         return response
     }
 }

@@ -5,7 +5,9 @@ import app.datatypes.User
 import groovy.util.logging.Log4j
 import groovyx.net.http.HttpResponseDecorator
 import ru.yandex.qatools.allure.annotations.Features
+import ru.yandex.qatools.allure.annotations.Step
 import ru.yandex.qatools.allure.annotations.Stories
+import spock.lang.Stepwise
 import spock.lang.Unroll
 import tests.BaseSpec
 
@@ -72,7 +74,7 @@ class UserTest extends BaseSpec {
 
     void verifyUserData(response, user) {
         assert response.data.username == user.username
-        assert response.data.name == user.name
+        assert response.data.name == user.getName()
         assert response.data.email == user.email
         assert response.data.phone == user.phone
         assert response.data.website == user.website
