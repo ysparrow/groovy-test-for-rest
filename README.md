@@ -29,7 +29,7 @@ build/allure-report/index.html
 Also you can specify necessary properties via command line by using -Dproperty.name = "property.value" :
 
 ```
-gradlew -Dapp.url="http:\\www.test.site" clean test
+gradlew -Dapp.url="http://www.test.site" clean test
 ```
 
 Additional info can be found here
