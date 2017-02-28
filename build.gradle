@@ -27,10 +27,7 @@ dependencies {
 }
 
 test {
-    // you can specify app.url property from command line e.g.: gradlew -Dapp.url="http://127.0.0.1:8080/app" test
-    // instead of using one from test.properties file
-    if (System.getProperty("app.url") != null)
-        systemProperty "app.url", System.getProperty("app.url")
+    systemProperties System.properties
 }
 
 buildscript {
