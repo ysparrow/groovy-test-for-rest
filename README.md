@@ -3,7 +3,7 @@ Created for Selenium Camp 2017
 
 To use this example you have to install json-server locally and run it:
 ```bash
-$ npm install -g json-server
+$ sudo npm install -g json-server
 $ json-server http://jsonplaceholder.typicode.com/db
 ```
 
