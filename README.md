@@ -34,6 +34,7 @@ gradlew -Dapp.url="http://www.test.site" clean test
 
 Additional info can be found here
 
+* [Video from Selenium Camp 2017](https://www.youtube.com/watch?v=glY2q-HgIng)
 * [Video from QA-Fest 2016](https://youtu.be/5elqH5UNwkk)
 * [Groovy documentation](http://groovy-lang.org/documentation.html)
 * [Spock documentation](http://spockframework.org/spock/docs/1.1-rc-2/all_in_one.html)
