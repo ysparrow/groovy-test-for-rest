@@ -1,5 +1,4 @@
 # REST API testing example on Groovy and Spock
-Created for Selenium Camp 2017
 
 To use this example you have to install json-server locally and run it:
 ```bash
