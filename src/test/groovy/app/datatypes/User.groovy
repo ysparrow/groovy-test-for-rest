@@ -1,8 +1,9 @@
 package app.datatypes
 
-//@ToString(includes = 'name')
+import groovy.transform.ToString
 
 
+@ToString(includes = 'name')
 class User {
     def name
     def username
