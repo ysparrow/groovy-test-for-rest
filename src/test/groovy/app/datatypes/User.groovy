@@ -2,11 +2,13 @@ package app.datatypes
 
 import groovy.transform.ToString
 
+//you can predefine default test data instantly in class definition
+//if not, then 'null' will be as default
 
 @ToString(includes = 'name')
 class User {
-    def name
-    def username
+    def name = 'Default User'
+    def username = 'Default Username'
     def email
     def phone
     def website
@@ -15,7 +17,7 @@ class User {
 }
 
 class Company {
-    def name
+    def name = "Company Name"
     def catchPhrase
     def bs
 }
@@ -29,7 +31,7 @@ class Address {
 }
 
 class Geo {
-    def lat
-    def lng
+    def lat = "0.0"
+    def lng = "0.0"
 }
 
