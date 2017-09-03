@@ -1,8 +1,8 @@
 package app.datatypes
 
-import groovy.transform.ToString
+//@ToString(includes = 'name')
 
-@ToString(includes = 'name')
+
 class User {
     def name
     def username
@@ -31,3 +31,4 @@ class Geo {
     def lat
     def lng
 }
+

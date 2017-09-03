@@ -26,10 +26,11 @@ class MessageBody {
 
     def static getBody(userId, title, status) {
         return """
-        {
-            "userId": ${userId},
-            "title": "${title}",
-            "completed": ${status}
-        } """
+               {
+                 "userId": 1,
+                 "title": "delectus aut autem",
+                 "completed": false
+               }
+         """
     }
 }
