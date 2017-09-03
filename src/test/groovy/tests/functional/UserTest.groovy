@@ -20,7 +20,7 @@ class UserTest extends BaseSpec {
     User user = new User();
 
     def setupSpec() {
-        //UserActions.deleteAllUsers()
+        UserActions.deleteAllUsers()
     }
 
     @Unroll
